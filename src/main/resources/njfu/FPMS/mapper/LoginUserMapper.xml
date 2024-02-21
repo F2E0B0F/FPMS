@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="njfu.FPMS.mapper.LoginUserMapper">
+    <select id="getAllLoginUsers" resultType="njfu.FPMS.user.LoginUser">
+        SELECT * FROM `login_user`
+    </select>
+    <select id="searchUsers" resultType="njfu.FPMS.user.LoginUser">
+        SELECT * 
+        FROM `login_user`
+        WHERE ( name REGEXP '${regExpName}' )
+    </select>
+
+    <!-- userCreate --> 
+
+    <insert id="userCreate" parameterType="njfu.FPMS.user.LoginUser">
+        INSERT INTO `login_user` (`name`, `shadow`, `userGroup`, `createDate`)
+        VALUES ( #{name}, #{shadow}, #{userGroup}, #{createDate} )
+</insert>
+</mapper>
